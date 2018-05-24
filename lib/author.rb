@@ -1,3 +1,20 @@
-class Author
+require './lib/book'
 
+class Author
+  attr_reader :books
+
+  def initialize(author)
+    @first_name = author[:first_name]
+    @last_name = author[:last_name]
+    @books = []
+  end
+
+  def add_book(title, pub_date)
+    book = Book.new({author_first_name:@first_name,\
+                        author_last_name:@last_name,
+                        title:title,\
+                        publication_date:pub_date})
+    @books.push(book)
+    return book
+  end
 end
