@@ -58,4 +58,13 @@ class LibraryTest < Minitest::Test
     assert_equal "Bronte", @dpl.card_catalogue[1].author_last_name
     assert_equal "Lee", @dpl.card_catalogue[2].author_last_name
   end
+
+  def test_find_by_author
+    book_1 = @dpl.add_to_collection(@jane_eyre)
+    book_2 = @dpl.add_to_collection(@mockingbird)
+    book_3 = @dpl.add_to_collection(@villette)
+
+    c_bronte = @dpl.find_by_author("Charlotte Bronte")
+    assert_equal ["Jane Eyre", "Villette"], c_bronte.keys
+  end
 end
